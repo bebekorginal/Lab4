@@ -3,6 +3,12 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 
+const logger = (req, res, next) => {
+    console.log(`${req.method} ${req.url} ${new Date().toLocaleTimeString()}`);
+    next();
+};
+
+app.use(logger);
 app.use(express.json());
 
 let users = [
