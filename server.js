@@ -22,6 +22,12 @@ app.get('/api/info', (req, res) => {
     });
 });
 
+app.get('/api/users/search', (req, res) => {
+    const { name, page = 1 } = req.query;
+    
+    res.json({ name, page });
+});
+
 app.get('/api/users/:id', (req, res) => {
     const id = req.params.id;
 
@@ -30,3 +36,4 @@ app.get('/api/users/:id', (req, res) => {
         id: id
     });
 });
+
